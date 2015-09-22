@@ -14,6 +14,16 @@ Download: https://play.google.com/store/apps/details?id=org.daduke.realmar.dhcpv
 
 Google Issue Thread: https://code.google.com/p/android/issues/detail?can=2&start=0&num=100&q=&colspec=ID%20Type%20Status%20Owner%20Summary%20Stars&groupby=&sort=&id=32621
 
+Third Party Software
+--------------------
+I use the DHCPv6 client binary from wide-dhcpv6 (http://wide-dhcpv6.sourceforge.net/). I didn't compile this binary by myself. Instead I've taken it from the Fairphone source (https://www.fairphone.com/). I also use Fairphone's scripts around this binary.
+
+wide-dhcpv6 is licensed under the BSD License
+
+Fairphones source contains open source software including software released under the GNU General Public License (GPL) version 2 and Library/Lesser General Public License version 2/2.1.
+
+Those binaries and scripts will be downloaded an put in the right folder when executing install.sh
+
 Installation
 ------------
   - Run install.sh
