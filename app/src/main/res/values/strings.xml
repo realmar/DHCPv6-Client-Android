@@ -1,0 +1,131 @@
+<resources>
+    <string name="app_name">DHCPv6 Client</string>
+
+    <string name="action_install">Install</string>
+    <string name="action_install_update">Update</string>
+    <string name="action_uninstall">Uninstall</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+    <string name="action_donate">Donate</string>
+    <string name="action_support">Support</string>
+    <string name="action_invoke">Manually Invoke</string>
+    <string name="action_home">Home</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_donate">Donate</string>
+    <string name="title_activity_support">Support</string>
+    <string name="title_activity_custom_dhcpv6">Invoke</string>
+    <string name="title_activity_settings_advanced">Advanced Settings</string>
+    <string name="title_activity_settings_advanced_add">Advanced Settings</string>
+
+    <string name="pref_key_enable_dhcpv6">Enable / Disable</string>
+    <string name="pref_key_dhcpv6_settings">Interfaces to process</string>
+    <string name="pref_key_misc">Misc</string>
+    <string name="pref_key_more_interfaces">More Interfaces</string>
+    <string name="pref_key_custom_interfaces">Custom</string>
+    <string name="pref_key_donate">Donate</string>
+    <string name="pref_key_donate_more">More</string>
+    <string name="pref_key_debug">Debug</string>
+
+    <string name="pref_enabled">Enabled</string>
+    <string name="pref_disabled">Disabled</string>
+
+    <string name="pref_wlan">WiFi</string>
+    <string name="pref_mobile">Mobile Data</string>
+    <string name="pref_all">All Interfaces</string>
+
+    <string name="pref_debug">Debugging</string>
+
+    <string name="pref_enabled_summ">DHCPv6 client currently active</string>
+    <string name="pref_disabled_summ">DHCPv6 client currently not active</string>
+
+    <string name="pref_wlan_summ">Get an IPv6 address over WiFi</string>
+    <string name="pref_mobile_summ">Try to get an IPv6 address over the mobile network (assuming it is configured on interface rmnet0)</string>
+    <string name="pref_all_summ">Perform DHCPv6 on all available interfaces</string>
+
+    <string name="pref_debug_summ">Show debugging messages</string>
+
+    <string name="pref_button_donate">Donate</string>
+    <string name="pref_button_about">About</string>
+    <string name="pref_button_support">Support</string>
+    <string name="pref_button_add_interfaces">Add Interfaces</string>
+    <string name="pref_button_add_interface">Add Interface</string>
+    <string name="pref_button_add_interface_key">pref_button_add_interface_key</string>
+    <string name="pref_button_advanced">Advanced</string>
+
+    <string name="pref_button_donate_amount_1">Donate</string>
+    <string name="pref_button_donate_amount_5">Donate</string>
+    <string name="pref_button_donate_amount_10">Donate</string>
+
+    <string name="pref_button_donate_thank_you">Thank You!</string>
+
+    <string name="cust_interface">Custom Interface</string>
+    <string name="cust_interface_button">cust_interface_button</string>
+
+    <string name="pref_button_donate_summ">Support me and the development :)</string>
+    <string name="pref_button_about_summ">About this app</string>
+    <string name="pref_button_support_summ">Get support</string>
+    <string name="pref_button_add_interfaces_summ">Configure more interfaces on which you want to do DHCPv6</string>
+    <string name="pref_button_advanced_summ">More settings for experienced users</string>
+
+    <string name="pref_button_donate_amount_1_summ">Buy me an energy drink for full speed coding</string>
+    <string name="pref_button_donate_amount_5_summ">Buy me a sandwich to improve my cognitive ability</string>
+    <string name="pref_button_donate_amount_10_summ">Buy me a lunch</string>
+
+    <string name="pref_button_donate_thank_you_summ">for donating, this means a lot to me! You support my work and further development.\n\nNote: the original prices are in CHF (Swiss Francs)</string>
+
+    <string name="button_invoke">Run DHCPv6</string>
+    <string name="button_invoke_main">Manually Invoke</string>
+    <string name="button_refresh">Refresh</string>
+
+    <string name="about_text">This app is written and created by Anastassios Martakos\n\nWhat does this app do?\nThis app gets an IPv6 address over DHCPv6.\n\nIssue:\nAndroid currently only supports SLAAC (Stateless Address Autoconfiguration) in IPv6 networks and no DHCPv6. Read more: https://code.google.com/p/android/issues/detail?id=32621\nFor this reason I did some research and created this app.\n\nDetailed Explanation:\nFairphone (Enterprise) has a DHCPv6 client implementation in their Android ROM. I went through their source and took their DHCPv6 binary. Although Fairphone uses the wide-dhcpv6 client (http://wide-dhcpv6.sourceforge.net/), they have written their own scripts around the binary. Simply taking the source of wide-dhcpv6 and compiling it for arm won\'t work but it is possible to compile the binary and then using the scripts from Fairphone.\n\nWhat does this app do?\nThis app starts the Fairphones DHCPv6 client every time the phone connects to a WiFi network (or any network, you can configure this) and gets an IPv6 address over DHCPv6.\n\nCommunicating with the DHCPv6 Client binary\nThis app listens with a broadcast receiver to network changes. Every time you connect to a network (any network it is configurable through the advanced menu in the settings) it invokes a communicator binary (dhcp6ctl) to communicate with the master process (dhcp6c), this master process is automatically invoked by this app if it is not running, to get an IPv6 address using DHCPv6.\n\nDo I need this app?\nYes, if you want to access IPv6 networks with DHCP address distribution. This app makes you future-proof\n\nTroubleshooting:\nIt asks me if I want to install the DHCPv6 client every time I start the app - Update your busybox\nI dont get an IPv6 address - Verify that you have IPv6 available in your network, then disable and enable WiFi, reboot your phone\nThe app freezes for some time - Please report when und where, although it should continue working after a while\nOther issues - Contact support (customer.realmar@gmail.com)\n\nCredits:\nAnastassios Martakos - Developing this app\nFairphone (https://www.fairphone.com/) - providing the source of their ROM\nGoogle - For their Android icon set (https://www.google.com/design/icons/index.html)\n\nUsed binaries (licences may apply):\nWIDE-DHCPv6 (http://wide-dhcpv6.sourceforge.net/) - Providing the source of their DHCP client</string>
+
+    <string name="support_text">Support: customer.realmar@gmail.com\n\nNote:\nI do this voluntarily so DON\'T EXPECT ANY PROFESSIONAL SUPPORT.\nAlthough I\'m happy to help you.</string>
+    <string name="invoke_text">You can now manually run the DHCPv6 client for ONE TIME (invoke manually once) on the interfaces you specified above. For Automated invocation refer to the settings page. (The DHCPv6 client is invoked automatically as specified in the settings page)</string>
+
+    <string name="msgbox_thank_you_donate">Thank you SO much for donating!</string>
+    <string name="msgbox_purchase_failed">There was an error with your purchase</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="unsupported_arch_armv8">It seems that your phone is based on the armv8 architecture which has 64-bit support.\nAlthough the DHCPv6 SHOULD work anyway but there is a slight chance that it doesn\'t.\n\nThis is just a warning so you can ignore it because your system should be multiarch.</string>string>
+    <string name="unsupported_arch_x86">It seems that your phone is based on a x86 or x86_64 architecture. This architecture is currently not supported.\nAlthough there is a slight chance that the DHCPv6 client might work, give it a try.</string>string>
+
+    <string name="google_play_connection_issue">Could not connect to Google Play Services.</string>
+    <string name="donation_retry">Please retry in a few seconds. Or reopen donation page.</string>
+    <string name="purchase_error">There was an error with your purchase: </string>
+    <string name="thank_you">Thank you SO much for donating!</string>
+
+    <string name="trying_ipv6">Trying to get an IPv6 on: </string>
+
+    <string name="no_root_title">Failed to acquire root access</string>
+    <string name="no_root">It seems that you have no root permissions on your device, this software will not work without root</string>
+    <string name="no_busybox_title">Busybox not found</string>
+    <string name="no_busybox">It seems that you have Busybox not installed, this is a requirement</string>
+
+    <string name="check_md5">Couldn\'t verify files, please try again or contact support: customer.realmar@gmail.com</string>
+    <string name="check_exist">Couldn\'t create files, please try again or contact support: customer.realmar@gmail.com</string>
+    <string name="check_copy">Couldn\'t copy files, please try again or contact support: customer.realmar@gmail.com</string>
+    <string name="check_unexpected">Unexpected error in installation, please try again or contact support: customer.realmar@gmail.com</string>
+    <string name="check_other">It seems that an error occurred, try again or contact support: customer.realmar@gmail.com</string>
+
+    <string name="update_notification_title">DHCPv6 Client update Available</string>
+    <string name="update_notification">Touch here to update the DHCPv6 Client (This update is required in order for the client to work)</string>
+
+    <string name="success_install">The DHCPv6 client was successfully installed</string>
+    <string name="success_update">The DHCPv6 client update was successfully installed</string>
+
+    <string name="ip_to_clipboard">IP address copied to clipboard</string>
+
+    <string name="update_title">DHCPv6 Client Update</string>
+    <string name="update_text">It seems that you recently updated this app.\n\nWith this new version it is required to install additional binaries in order for the client to work.\nDo you want to install those binaries now?</string>
+    <string name="not_enough_space">There is not enough space left on /system. Please delete some files which you don\'t need (eg. ringstones, apps, etc…) and try again</string>
+    <string name="install_text">Do you want to install the DHCPv6 client?</string>
+    <string name="uninstall_text">Are you sure you want to uninstall the DHCPv6 client?</string>
+    <string name="download_append_text">\n\nDo you want to retry and download the required files from the internet?</string>
+    <string name="failure_no_internet_connection">An active internet connection is required to download the files from the internet, please retry when you have an active and working internet connection.</string>
+
+    <string name="success_uninstall">The DHCPv6 client was successfully uninstalled</string>
+    <string name="failure_uninstall">It seems that an Error occurred, restart application</string>
+</resources>

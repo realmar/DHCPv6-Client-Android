@@ -1,0 +1,8 @@
+package org.daduke.realmar.dhcpv6client;
+
+/**
+ * Created by Anastassios Martakos on 9/22/15.
+ */
+public class BillingPublicKey {
+    public static String BILLING_PUBLIC_KEY = "<insert your public key, acquirable in developer console under Services & APIs>";
+}

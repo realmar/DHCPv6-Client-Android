@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_key_donate"
+        android:key="pref_key_donate">
+        <Preference android:title="@string/pref_button_donate_amount_1"
+            android:key="pref_button_donate_amount_1"
+            android:summary="@string/pref_button_donate_amount_1_summ"/>
+
+        <Preference android:title="@string/pref_button_donate_amount_5"
+            android:key="pref_button_donate_amount_5"
+            android:summary="@string/pref_button_donate_amount_5_summ"/>
+
+        <Preference android:title="@string/pref_button_donate_amount_10"
+            android:key="pref_button_donate_amount_10"
+            android:summary="@string/pref_button_donate_amount_10_summ"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_key_donate_more"
+        android:key="pref_key_donate_more">
+
+        <Preference android:title="@string/pref_button_donate_thank_you"
+            android:key="pref_button_donate"
+            android:summary="@string/pref_button_donate_thank_you_summ"/>
+    </PreferenceCategory>
+</PreferenceScreen>

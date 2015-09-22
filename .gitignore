@@ -1,0 +1,12 @@
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+Testing.java
+BillingPublicKey.java
+dhcpv6_update.zip
+dhcpv6_base.zip
+Misc/*

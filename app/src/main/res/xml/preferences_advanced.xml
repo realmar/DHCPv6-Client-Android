@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/pref_key_more_interfaces"
+        android:key="pref_key_more_interfaces">
+
+        <CheckBoxPreference
+            android:key="pref_mobile"
+            android:title="@string/pref_mobile"
+            android:summary="@string/pref_mobile_summ"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_all"
+            android:title="@string/pref_all"
+            android:summary="@string/pref_all_summ"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_key_custom_interfaces"
+        android:key="pref_key_custom_interfaces">
+
+        <PreferenceScreen
+            android:title="@string/pref_button_add_interfaces"
+            android:key="pref_button_add_interfaces"
+            android:summary="@string/pref_button_add_interfaces_summ"
+            android:icon="@mipmap/drawable_plus">
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_key_debug"
+        android:key="pref_key_debug">
+
+        <CheckBoxPreference
+            android:key="pref_debug"
+            android:title="@string/pref_debug"
+            android:summary="@string/pref_debug_summ"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/pref_key_enable_dhcpv6"
+        android:key="pref_key_enable_dhcpv6">
+
+        <SwitchPreference
+            android:key="pref_enable"
+            android:title="@string/pref_enabled"
+            android:summary="@string/pref_enabled_summ"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_key_dhcpv6_settings"
+        android:key="pref_key_dhcpv6_settings">
+
+        <CheckBoxPreference
+            android:key="pref_wlan"
+            android:title="@string/pref_wlan"
+            android:summary="@string/pref_wlan_summ"
+            android:defaultValue="true" />
+
+        <PreferenceScreen
+            android:title="@string/pref_button_advanced"
+            android:key="pref_button_advanced"
+            android:summary="@string/pref_button_advanced_summ">
+        </PreferenceScreen>
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,55 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <group
+        android:id="@+id/menu_overview">
+        <item android:id="@+id/action_main"
+            android:title="@string/action_home"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:icon="@mipmap/ic_home" />
+
+        <item android:id="@+id/action_invoke"
+            android:title="@string/action_invoke"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:icon="@mipmap/ic_invoke" />
+    </group>
+
+    <group
+        android:id="@+id/menu_preferences">
+        <item android:id="@+id/action_unorinstall"
+            android:title="dummy"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:icon="@mipmap/ic_install" />
+
+        <item android:id="@+id/action_settings"
+            android:title="@string/action_settings"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:icon="@mipmap/ic_settings" />
+    </group>
+
+    <group
+        android:id="@+id/menu_misc">
+        <item android:id="@+id/action_donate"
+            android:title="@string/action_donate"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:icon="@mipmap/ic_donate" />
+
+        <item android:id="@+id/action_support"
+            android:title="@string/action_support"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:icon="@mipmap/ic_support" />
+
+        <item android:id="@+id/action_about"
+            android:title="@string/action_about"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:icon="@mipmap/ic_about" />
+    </group>
+</menu>

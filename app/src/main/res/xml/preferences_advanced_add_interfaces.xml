@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="pref_add_interfaces">
+    <EditTextPreference android:title="@string/pref_button_add_interface"
+        android:key="pref_button_add_interface"
+        android:icon="@mipmap/drawable_plus"/>
+</PreferenceScreen>
