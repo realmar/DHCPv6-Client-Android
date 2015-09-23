@@ -3,6 +3,10 @@ DHCPv6 Client
 
 Description
 -----------
+This app requires ROOT PREMISSIONS because of the following reasons:
+  - the wide-dhcpv6 client uses the privileged port 546
+  - the client needs to configure network interfaces
+
 Android doesn't support DHCPv6 out of the box, because Google doesn't want to implement this feature. For some people (especially universities and corporations) this is a serious issue, because they require control over their IPv6 addresses.
 
 This app fixes this issue. It requests an IPv6 address using DHCPv6 and makes your Android future-proof.
