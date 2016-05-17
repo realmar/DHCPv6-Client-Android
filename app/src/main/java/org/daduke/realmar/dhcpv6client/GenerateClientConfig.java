@@ -1,5 +1,6 @@
 package org.daduke.realmar.dhcpv6client;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,7 +18,7 @@ public class GenerateClientConfig extends AsyncTask<String, String, String> {
     private String final_config_c = "";
     private String final_config_c_dns = "";
 
-    private Context context;
+    private Activity activity;
 
     private String config_template_c =
             "interface <INTERFACE> {\\n" +
@@ -40,9 +41,9 @@ public class GenerateClientConfig extends AsyncTask<String, String, String> {
 
     ProgressDialog progDialog;
 
-    public GenerateClientConfig(Context context) {
-        this.context = context;
-        progDialog = new ProgressDialog(context);
+    public GenerateClientConfig(Activity activity) {
+        this.activity = activity;
+        progDialog = new ProgressDialog(activity);
     }
 
     @Override
@@ -68,13 +69,13 @@ public class GenerateClientConfig extends AsyncTask<String, String, String> {
 
         if(!full_check_result.equals("ok")) {
             if (full_check_result.equals("md5")) {
-                AlertDialog error = (AlertDialog) msg_box.one_button(context, "Error", context.getString(R.string.check_md5), false);
+                AlertDialog error = (AlertDialog) msg_box.one_button(activity, "Error", activity.getString(R.string.check_md5), false);
                 error.show();
             } else if (full_check_result.equals("exist")) {
-                AlertDialog error = (AlertDialog) msg_box.one_button(context, "Error", context.getString(R.string.check_exist), false);
+                AlertDialog error = (AlertDialog) msg_box.one_button(activity, "Error", activity.getString(R.string.check_exist), false);
                 error.show();
             } else {
-                AlertDialog error = (AlertDialog) msg_box.one_button(context, "Error", context.getString(R.string.check_unexpected), false);
+                AlertDialog error = (AlertDialog) msg_box.one_button(activity, "Error", activity.getString(R.string.check_unexpected), false);
                 error.show();
             }
         }
@@ -83,7 +84,7 @@ public class GenerateClientConfig extends AsyncTask<String, String, String> {
     }
 
     private void generate_client_config() {
-        ArrayList<String> all_configured_interfaces_base = Misc.get_all_configured_interfaces(context);
+        ArrayList<String> all_configured_interfaces_base = Misc.get_all_configured_interfaces(activity);
         ArrayList<ArrayList<String>> all_configured_interfaces_final = new ArrayList<ArrayList<String>>();
 
         ArrayList<String> used_ianas = new ArrayList<String>();
@@ -152,7 +153,7 @@ public class GenerateClientConfig extends AsyncTask<String, String, String> {
     }
 
     public void apply_config() {
-        SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = shared_preferences.edit();
 
         if(!shared_preferences.contains(Constants.DHCP6C_CONF)) { editor.putString(Constants.DHCP6C_CONF, "null"); }

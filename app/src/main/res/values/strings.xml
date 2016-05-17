@@ -103,6 +103,8 @@
     <string name="no_root">It seems that you have no root permissions on your device, this software will not work without root</string>
     <string name="no_busybox_title">Busybox not found</string>
     <string name="no_busybox">It seems that you have Busybox not installed, this is a requirement</string>
+    <string name="missing_commands_title">Commands missing</string>
+    <string name="missing_commands">It seems that some required commands are missing. Please verify, that all commands mentioned at the bottom are available in /system/bin.\n\nYou can achieve this by using adb and standard unix command line tools.\n\nAlso you can reinstall busybox or try a different version of busybox.\n\nYou can also contact the support: customer.realmar@gmail.com.\nI\'m happy to help you.\n\n</string>
 
     <string name="check_md5">Couldn\'t verify files, please try again or contact support: customer.realmar@gmail.com</string>
     <string name="check_exist">Couldn\'t create files, please try again or contact support: customer.realmar@gmail.com</string>

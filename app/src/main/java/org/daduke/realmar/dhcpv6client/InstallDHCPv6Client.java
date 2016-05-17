@@ -1,5 +1,6 @@
 package org.daduke.realmar.dhcpv6client;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,15 +14,15 @@ import android.util.Log;
  */
 public class InstallDHCPv6Client extends AsyncTask<String, String, String> {
     ProgressDialog progDialog;
-    Context context;
+    Activity activity;
     private boolean result_status;
     private boolean full_installation;
     private boolean download_files;
 
-    public InstallDHCPv6Client(Context context_arg, boolean full_installation, boolean download_files) {
-        context = context_arg;
+    public InstallDHCPv6Client(Activity activity_arg, boolean full_installation, boolean download_files) {
+        activity = activity_arg;
         this.full_installation = full_installation;
-        progDialog = new ProgressDialog(context_arg);
+        progDialog = new ProgressDialog(activity_arg);
         this.download_files = download_files;
     }
 
@@ -47,7 +48,7 @@ public class InstallDHCPv6Client extends AsyncTask<String, String, String> {
             String full_check_result = DHCPv6Integrity.FullCheck();
 
             if(full_check_result.equals("ok")) {
-                SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(activity);
                 SharedPreferences.Editor editor = shared_preferences.edit();
 
                 editor.putBoolean("is_installed", true);
@@ -58,14 +59,14 @@ public class InstallDHCPv6Client extends AsyncTask<String, String, String> {
                 MainActivity.option_menu_main.findItem(R.id.action_invoke).setEnabled(true);
                 MainActivity.option_menu_main.findItem(R.id.action_unorinstall).setIcon(R.mipmap.ic_uninstall);
 
-                new GenerateClientConfig(context).execute();
+                new GenerateClientConfig(activity).execute();
 
                 AlertDialog success;
 
                 if(full_installation) {
-                    success = (AlertDialog) msg_box.one_button(context, "Success", context.getString(R.string.success_install), false);
+                    success = (AlertDialog) msg_box.one_button(activity, "Success", activity.getString(R.string.success_install), false);
                 }else{
-                    success = (AlertDialog) msg_box.one_button(context, "Success", context.getString(R.string.success_update), false);
+                    success = (AlertDialog) msg_box.one_button(activity, "Success", activity.getString(R.string.success_update), false);
                 }
                 success.show();
             }else{
@@ -73,34 +74,34 @@ public class InstallDHCPv6Client extends AsyncTask<String, String, String> {
                 AlertDialog failed;
                 if(full_check_result.equals("md5")) {
                     if (download_files) {
-                        failed = (AlertDialog) msg_box.one_button(context, "Failed", context.getString(R.string.check_md5), false);
+                        failed = (AlertDialog) msg_box.one_button(activity, "Failed", activity.getString(R.string.check_md5), false);
                         failed.show();
                     }else{
-                        Misc.question_download_files(context, context.getString(R.string.check_md5), full_installation);
+                        Misc.question_download_files(activity, activity.getString(R.string.check_md5), full_installation);
                     }
                 }else if(full_check_result.equals("exist")) {
                     if (download_files) {
-                        failed = (AlertDialog) msg_box.one_button(context, "Failed", context.getString(R.string.check_copy), false);
+                        failed = (AlertDialog) msg_box.one_button(activity, "Failed", activity.getString(R.string.check_copy), false);
                         failed.show();
                     }else {
-                        Misc.question_download_files(context, context.getString(R.string.check_copy), full_installation);
+                        Misc.question_download_files(activity, activity.getString(R.string.check_copy), full_installation);
                     }
                 }else{
                     if (download_files) {
-                        failed = (AlertDialog) msg_box.one_button(context, "Failed", context.getString(R.string.check_unexpected), false);
+                        failed = (AlertDialog) msg_box.one_button(activity, "Failed", activity.getString(R.string.check_unexpected), false);
                         failed.show();
                     }else {
-                        Misc.question_download_files(context, context.getString(R.string.check_unexpected), full_installation);
+                        Misc.question_download_files(activity, activity.getString(R.string.check_unexpected), full_installation);
                     }
                 }
             }
         }else{
             AlertDialog failed;
             if (download_files) {
-                failed = (AlertDialog) msg_box.one_button(context, "Failed", context.getString(R.string.check_other), false);
+                failed = (AlertDialog) msg_box.one_button(activity, "Failed", activity.getString(R.string.check_other), false);
                 failed.show();
             }else {
-                Misc.question_download_files(context, context.getString(R.string.check_other), full_installation);
+                Misc.question_download_files(activity, activity.getString(R.string.check_other), full_installation);
             }
         }
         progDialog.dismiss();
@@ -109,10 +110,10 @@ public class InstallDHCPv6Client extends AsyncTask<String, String, String> {
     public boolean install_dhcpv6() {
         try {
             if(full_installation) {
-                DHCPv6Integrity.install_all(context, download_files);
+                DHCPv6Integrity.install_all(activity, download_files);
                 return true;
             }else{
-                DHCPv6Integrity.install_update(context, download_files);
+                DHCPv6Integrity.install_update(activity, download_files);
                 return true;
             }
         }catch (Exception e) {

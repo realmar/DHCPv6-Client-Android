@@ -1,5 +1,6 @@
 package org.daduke.realmar.dhcpv6client;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,15 +23,15 @@ public class UIMenu {
         status_dialog.show();
     }
 
-    public static void unorinstall(Context context) {
-        SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(context);
+    public static void unorinstall(Activity activity) {
+        SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(activity);
 
         if (shared_preferences.getBoolean("is_installed", false) && shared_preferences.getBoolean("is_installed_update", false)) {
-            Misc.question_uninstallation(context);
+            Misc.question_uninstallation(activity);
         }else if(shared_preferences.getBoolean("is_installed", false) && !shared_preferences.getBoolean("is_installed_update", false)) {
-            Misc.question_installation_update(context);
+            Misc.question_installation_update(activity);
         }else{
-            Misc.question_installation(context);
+            Misc.question_installation(activity);
         }
     }
 }

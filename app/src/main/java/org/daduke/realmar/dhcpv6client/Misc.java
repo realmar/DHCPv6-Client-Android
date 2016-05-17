@@ -1,5 +1,6 @@
 package org.daduke.realmar.dhcpv6client;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -85,18 +86,18 @@ public class Misc extends ActionBarActivity {
         }
     }
 
-    public static void question_installation_update(final Context context) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle(context.getString(R.string.update_title));
-        alertDialog.setMessage(context.getString(R.string.update_text));
+    public static void question_installation_update(final Activity activity) {
+        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+        alertDialog.setTitle(activity.getString(R.string.update_title));
+        alertDialog.setMessage(activity.getString(R.string.update_text));
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if(SystemIntegrity.update_check()) {
-                            new InstallDHCPv6Client(context, false, false).execute();
+                            new InstallDHCPv6Client(activity, false, false).execute();
                         }else{
                             MsgBoxes msg_box = new MsgBoxes();
-                            AlertDialog no_disk_space = (AlertDialog) msg_box.one_button(context, "Failure", context.getString(R.string.not_enough_space), false);
+                            AlertDialog no_disk_space = (AlertDialog) msg_box.one_button(activity, "Failure", activity.getString(R.string.not_enough_space), false);
                             no_disk_space.show();
                         }
                         dialog.dismiss();
@@ -111,18 +112,18 @@ public class Misc extends ActionBarActivity {
         alertDialog.show();
     }
 
-    public static void question_installation(final Context context) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+    public static void question_installation(final Activity activity) {
+        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
         alertDialog.setTitle("Install");
-        alertDialog.setMessage(context.getString(R.string.install_text));
+        alertDialog.setMessage(activity.getString(R.string.install_text));
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if(SystemIntegrity.full_check()) {
-                            new InstallDHCPv6Client(context, true, false).execute();
+                            new InstallDHCPv6Client(activity, true, false).execute();
                         }else{
                             MsgBoxes msg_box = new MsgBoxes();
-                            AlertDialog no_disk_space = (AlertDialog) msg_box.one_button(context, "Failure", context.getString(R.string.not_enough_space), false);
+                            AlertDialog no_disk_space = (AlertDialog) msg_box.one_button(activity, "Failure", activity.getString(R.string.not_enough_space), false);
                             no_disk_space.show();
                         }
                         dialog.dismiss();
@@ -137,14 +138,14 @@ public class Misc extends ActionBarActivity {
         alertDialog.show();
     }
 
-    public static void question_uninstallation(final Context context) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+    public static void question_uninstallation(final Activity activity) {
+        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
         alertDialog.setTitle("Uninstall");
-        alertDialog.setMessage(context.getString(R.string.uninstall_text));
+        alertDialog.setMessage(activity.getString(R.string.uninstall_text));
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        new UninstallDHCPv6Client(context).execute();
+                        new UninstallDHCPv6Client(activity).execute();
                         dialog.dismiss();
                     }
                 });
@@ -157,18 +158,18 @@ public class Misc extends ActionBarActivity {
         alertDialog.show();
     }
 
-    public static void question_download_files(final Context context, String text, final boolean full_installation) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+    public static void question_download_files(final Activity activity, String text, final boolean full_installation) {
+        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
         alertDialog.setTitle("Retry?");
-        alertDialog.setMessage(text + context.getString(R.string.download_append_text));
+        alertDialog.setMessage(text + activity.getString(R.string.download_append_text));
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if(is_internet_availble(context)) {
-                            new InstallDHCPv6Client(context, full_installation, true).execute();
+                        if(is_internet_availble(activity)) {
+                            new InstallDHCPv6Client(activity, full_installation, true).execute();
                         }else{
                             MsgBoxes msg_box = new MsgBoxes();
-                            AlertDialog no_internet = (AlertDialog) msg_box.one_button(context, "Failure", context.getString(R.string.failure_no_internet_connection), false);
+                            AlertDialog no_internet = (AlertDialog) msg_box.one_button(activity, "Failure", activity.getString(R.string.failure_no_internet_connection), false);
                             no_internet.show();
                         }
                         dialog.dismiss();
@@ -183,8 +184,8 @@ public class Misc extends ActionBarActivity {
         alertDialog.show();
     }
 
-    public static void unsupported_arch(final Context context, String text) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+    public static void unsupported_arch(final Activity activity, String text) {
+        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
         alertDialog.setTitle("Unsupported Architecture");
         alertDialog.setMessage(text);
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
@@ -196,7 +197,7 @@ public class Misc extends ActionBarActivity {
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Do not show again",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                        SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(activity);
                         SharedPreferences.Editor editor = shared_preferences.edit();
 
                         editor.putBoolean(Constants.SHOW_ARCH_WARNING, false);

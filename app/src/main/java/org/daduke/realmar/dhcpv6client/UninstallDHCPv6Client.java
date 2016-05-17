@@ -1,5 +1,6 @@
 package org.daduke.realmar.dhcpv6client;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,12 +13,12 @@ import android.preference.PreferenceManager;
  */
 public class UninstallDHCPv6Client  extends AsyncTask<String, String, String> {
     ProgressDialog progDialog;
-    Context context;
+    Activity activity;
     private boolean result_status;
 
-    public UninstallDHCPv6Client(Context context_arg) {
-        context = context_arg;
-        progDialog = new ProgressDialog(context_arg);
+    public UninstallDHCPv6Client(Activity activity_arg) {
+        activity = activity_arg;
+        progDialog = new ProgressDialog(activity_arg);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class UninstallDHCPv6Client  extends AsyncTask<String, String, String> {
         super.onPostExecute(unused);
         MsgBoxes msg_box = new MsgBoxes();
         if(result_status) {
-            SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(activity);
             SharedPreferences.Editor editor = shared_preferences.edit();
 
             editor.putBoolean("is_installed", false);
@@ -50,10 +51,10 @@ public class UninstallDHCPv6Client  extends AsyncTask<String, String, String> {
             MainActivity.option_menu_main.findItem(R.id.action_invoke).setEnabled(false);
             MainActivity.option_menu_main.findItem(R.id.action_unorinstall).setIcon(R.mipmap.ic_install);
 
-            AlertDialog success = (AlertDialog) msg_box.one_button(context, "Success", context.getString(R.string.success_uninstall), false);
+            AlertDialog success = (AlertDialog) msg_box.one_button(activity, "Success", activity.getString(R.string.success_uninstall), false);
             success.show();
         }else{
-            AlertDialog error = (AlertDialog) msg_box.one_button(context, "Error", context.getString(R.string.failure_uninstall) , false);
+            AlertDialog error = (AlertDialog) msg_box.one_button(activity, "Error", activity.getString(R.string.failure_uninstall) , false);
             error.show();
         }
         progDialog.dismiss();

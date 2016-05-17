@@ -117,7 +117,7 @@ public class SUCalls {
     public static void create_dir(String folder, String user, String group, String permission) {
         Log.d(TAG, "Creating dir: " + folder + " user: " + user + " group: " + group + " permission: " + permission);
         Shell.SU.run(Arrays.asList(
-                "busybox mkdir -p " + folder,
+                "mkdir -p " + folder,
                 "chown " + user + ":" + group + " " + folder,
                 "chmod " + permission + " " + folder
         ));
@@ -126,7 +126,7 @@ public class SUCalls {
     public static void delete_file(String file) {
         Log.d(TAG, "Delete file: " + file);
         Shell.SU.run(Arrays.asList(
-                "busybox rm -rf " + file
+                "rm -rf " + file
         ));
     }
 
@@ -134,7 +134,7 @@ public class SUCalls {
         Log.d(TAG, "Copy file " + src_file + " --> " + dest_file + " user: " + user + " group: " + group + " permission: " + permission);
         Shell.SU.run(Arrays.asList(
                 "rm -rf " + dest_file,
-                "busybox cp -r " + src_file + " " + dest_file,
+                "cp -r " + src_file + " " + dest_file,
                 "chown " + user + ":" + group + " " + dest_file,
                 "chmod " + permission + " " + dest_file
         ));

@@ -8,8 +8,8 @@ android {
         applicationId "org.daduke.realmar.dhcpv6client"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 21
-        versionName "1.4.3.1"
+        versionCode 22
+        versionName "1.4.4"
     }
     buildTypes {
         release {

@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -60,6 +61,15 @@ public class DHCPv6Integrity {
         md5_sums.put("dhcpv6_base.zip",                        "a8a0a946966474d238cd126202733a4a");
         md5_sums.put("dhcpv6_update.zip",                      "0f49fa94d431e1766a367af9be23bfd3");
     }
+
+    private static String[] required_commands = {
+            "cp",
+            "rm",
+            "chmod",
+            "chown",
+            "mkdir",
+            "mount"
+    };
 
     public static String FullCheck() {
         String exists = "ok";
@@ -123,6 +133,20 @@ public class DHCPv6Integrity {
 
 
         return valid;
+    }
+
+    public static ArrayList<String> check_commands() {
+        ArrayList<String> missing_commands = new ArrayList<String>();
+
+        for(String command : required_commands) {
+            File file = new File("/system/bin/" + command);
+
+            if(!file.exists()) {
+                missing_commands.add(command);
+            }
+        }
+
+        return missing_commands;
     }
 
     public static void install_all(Context context, boolean download_files) {
@@ -220,7 +244,7 @@ public class DHCPv6Integrity {
     }
 
     public static String write_client_conf(String file, String content) {
-        SUCalls.write_file(content,file);
+        SUCalls.write_file(content, file);
         SUCalls.set_permissions(file, "755", "root", "shell");
         return calculateMD5(new File(file));
     }
