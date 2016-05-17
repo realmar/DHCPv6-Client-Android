@@ -14,7 +14,6 @@ public class SettingsAdvancedFragment extends PreferenceFragment implements Shar
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences_advanced);
-        add_click_listener("pref_mobile");
         add_click_listener("pref_all");
         add_click_listener("pref_button_add_interfaces");
 
@@ -46,9 +45,6 @@ public class SettingsAdvancedFragment extends PreferenceFragment implements Shar
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 switch (element_arg) {
-                    case "pref_mobile":
-                        new GenerateClientConfig(getActivity()).execute();
-                        break;
                     case "pref_button_add_interfaces":
                         ((MainActivity) getActivity()).go_settings_advanced_add();
                         break;
@@ -67,21 +63,17 @@ public class SettingsAdvancedFragment extends PreferenceFragment implements Shar
         boolean is_installed_udpate = sharedPreferences.getBoolean("is_installed_update", false);
 
         if(!sharedPreferences.getBoolean("pref_enable", false) || !is_installed || !is_installed_udpate) {
-            findPreference("pref_mobile").setEnabled(false);
             findPreference("pref_button_add_interfaces").setEnabled(false);
             findPreference("pref_all").setEnabled(false);
         }else{
-            findPreference("pref_mobile").setEnabled(true);
             findPreference("pref_button_add_interfaces").setEnabled(true);
             findPreference("pref_all").setEnabled(true);
         }
 
         if(sharedPreferences.getBoolean("pref_all", false)) {
-            findPreference("pref_mobile").setEnabled(false);
             findPreference("pref_button_add_interfaces").setEnabled(false);
         }else{
             if(sharedPreferences.getBoolean("pref_enable", false) && is_installed && is_installed_udpate) {
-                findPreference("pref_mobile").setEnabled(true);
                 findPreference("pref_button_add_interfaces").setEnabled(true);
             }
         }

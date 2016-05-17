@@ -108,9 +108,9 @@ public class GetIPv6Address extends AsyncTask<String, String, String> {
                     if(last_state == ConnectivityManager.TYPE_MOBILE) return do_all;
                     editor.putInt(Constants.LAST_STATE, ConnectivityManager.TYPE_MOBILE);
                     editor.commit();
-                    if(!shared_preferences.getBoolean(Constants.PREF_MOBILE, false) && !shared_preferences.getBoolean("pref_all", false)) return do_all;
+                    // if(!shared_preferences.getBoolean(Constants.PREF_MOBILE, false) && !shared_preferences.getBoolean("pref_all", false)) return do_all;
 
-                    do_all = prepare_dhcpv6(context, "rmnet0", do_all);
+                    // do_all = prepare_dhcpv6(context, "rmnet0", do_all);
                     break;
                 default:
                     editor.putInt(Constants.LAST_STATE, -200);

@@ -31,7 +31,6 @@
     <string name="pref_disabled">Disabled</string>
 
     <string name="pref_wlan">WiFi</string>
-    <string name="pref_mobile">Mobile Data</string>
     <string name="pref_all">All Interfaces</string>
 
     <string name="pref_debug">Debugging</string>
@@ -40,7 +39,6 @@
     <string name="pref_disabled_summ">DHCPv6 client currently not active</string>
 
     <string name="pref_wlan_summ">Get an IPv6 address over WiFi</string>
-    <string name="pref_mobile_summ">Try to get an IPv6 address over the mobile network (assuming it is configured on interface rmnet0)</string>
     <string name="pref_all_summ">Perform DHCPv6 on all available interfaces</string>
 
     <string name="pref_debug_summ">Show debugging messages</string>

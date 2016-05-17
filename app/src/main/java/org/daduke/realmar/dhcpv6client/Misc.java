@@ -223,10 +223,6 @@ public class Misc extends ActionBarActivity {
                 configured_interfaces.add("wlan0");
             }
 
-            if (shared_preferences.getBoolean(Constants.PREF_MOBILE, false)) {
-                configured_interfaces.add("rmnet0");
-            }
-
             Set<String> additional_interfaces = shared_preferences.getStringSet(Constants.ADDITIONAL_INTERFACES, new HashSet<String>());
 
             for (String inter_face : additional_interfaces) {

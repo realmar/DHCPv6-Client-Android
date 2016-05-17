@@ -5,12 +5,6 @@
         android:key="pref_key_more_interfaces">
 
         <CheckBoxPreference
-            android:key="pref_mobile"
-            android:title="@string/pref_mobile"
-            android:summary="@string/pref_mobile_summ"
-            android:defaultValue="false" />
-
-        <CheckBoxPreference
             android:key="pref_all"
             android:title="@string/pref_all"
             android:summary="@string/pref_all_summ"
