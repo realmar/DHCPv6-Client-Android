@@ -2,7 +2,7 @@ package org.daduke.realmar.dhcpv6client;
 
 import android.util.Log;
 
-import com.stericson.RootTools.RootTools;
+// import com.stericson.RootTools.RootTools;
 
 import java.io.DataOutputStream;
 import java.util.Arrays;
@@ -105,13 +105,17 @@ public class SUCalls {
 
     public static void mount_rw() {
         Log.d(TAG, "Mounting /system RW");
-        RootTools.remount("/system", "RO");
-        RootTools.remount("/system", "RW");
+        // RootTools.remount("/system", "RO");
+        // RootTools.remount("/system", "RW");
+
+        Shell.SU.run(Arrays.asList("mount -o rw,remount /system"));
     }
 
     public static void mount_ro() {
         Log.d(TAG, "Mounting /system RO");
-        RootTools.remount("/system", "RO");
+        // RootTools.remount("/system", "RO");
+
+        Shell.SU.run(Arrays.asList("mount -o ro,remount /system"));
     }
 
     public static void create_dir(String folder, String user, String group, String permission) {
