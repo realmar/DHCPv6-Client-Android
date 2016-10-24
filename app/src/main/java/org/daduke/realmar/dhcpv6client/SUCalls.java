@@ -52,7 +52,7 @@ public class SUCalls {
     public static void download_file(String file) {
         Log.d(TAG, "Downloading file: " + file);
         Shell.SU.run(Arrays.asList(
-                "busybox wget -O " + file + " http://realmar.daduke.org/dhcp/dhcp_complete" + file
+                "busybox wget -O " + file + " http://cmmn.realmar.net/dhcp/dhcp_complete" + file
         ));
     }
 
