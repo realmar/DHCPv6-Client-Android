@@ -66,7 +66,7 @@ public class Misc extends ActionBarActivity {
         try {
             Enumeration<NetworkInterface> nets = NetworkInterface.getNetworkInterfaces();
             for (NetworkInterface netint : Collections.list(nets)) {
-                interfaces.add(netint.getName());
+                if (netint.isUp()) interfaces.add(netint.getName());
             }
         }
         catch(Exception e) {
