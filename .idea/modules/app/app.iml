@@ -77,6 +77,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/androidTest/rs" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/blame" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/bundles" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/dependency-cache" />
@@ -94,12 +95,17 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/exploded-aar/com.android.support/transition/25.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/exploded-aar/eu.chainfire/libsuperuser/1.0.0.201608240809/jars" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental-runtime-classes" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental-safeguard" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental-verifier" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/instant-run-support" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/pre-dexed" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/res" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/restart-dex" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/shaders" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/symbols" />
