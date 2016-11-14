@@ -37,13 +37,16 @@ public class GetIPv6Address extends AsyncTask<String, String, String> {
 
         SUCalls.remove_file("/data/misc/dhcp/dhcp6c_duid");
 
-        if(!SUCalls.check_process("dhcp6c")) {
+        SUCalls.force_dhcpv6(inter_face);
+        return null;
+
+        /*if(!SUCalls.check_process("dhcp6c")) {
             SUCalls.start_dhpv6c_process(inter_face);
             return null;
         }else {
             SUCalls.send_signal_to_client_process(inter_face);
             return null;
-        }
+        }*/
     }
     @Override
     protected void onPostExecute(String unused) {

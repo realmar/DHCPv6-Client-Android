@@ -16,6 +16,13 @@ import eu.chainfire.libsuperuser.Shell;
 public class SUCalls {
     private static final String TAG = "SUCalls";
 
+    public static void force_dhcpv6(String ifname) {
+        Shell.SU.run(Arrays.asList(
+                "kill -9 `pgrep dhcp6c`",
+                "dhcp6c -f " + ifname + " &"
+        ));
+    }
+
     public static void start_dhpv6c_process(String inter_face) {
         Shell.SU.run(Collections.singletonList("/system/bin/dhcp6c " + inter_face));
     }
@@ -39,7 +46,7 @@ public class SUCalls {
 
     public static boolean check_process(String process) {
         Log.d(TAG, "Checking master process");
-        return !Shell.SU.run(Collections.singletonList(String.format("ps | grep %s | grep -v grep", process))).isEmpty();
+        return !Shell.SU.run(Collections.singletonList("pgrep " + process)).isEmpty();
     }
 
     public static void kill_client_process() {
