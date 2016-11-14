@@ -12,8 +12,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 
-import org.apache.http.conn.util.InetAddressUtils;
-
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.ArrayList;
@@ -35,14 +34,12 @@ public class Misc extends ActionBarActivity {
 
         try {
             for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
-                NetworkInterface intf = (NetworkInterface) en.nextElement();
+                NetworkInterface intf = en.nextElement();
                 for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                     InetAddress inetAddress = enumIpAddr.nextElement();
 
-                    if (!inetAddress.isLoopbackAddress() && InetAddressUtils.isIPv4Address(inetAddress.getHostAddress())) {
-                        ipv4s.add(inetAddress.getHostAddress());
-                    }else if (!inetAddress.isLoopbackAddress()) {
-                        ipv6s.add(inetAddress.getHostAddress());
+                    if (!inetAddress.isLoopbackAddress()) {
+                        (inetAddress instanceof Inet4Address ? ipv4s : ipv6s).add(inetAddress.getHostAddress());
                     }
                 }
             }
@@ -69,7 +66,7 @@ public class Misc extends ActionBarActivity {
         try {
             Enumeration<NetworkInterface> nets = NetworkInterface.getNetworkInterfaces();
             for (NetworkInterface netint : Collections.list(nets)) {
-                interfaces.add(netint.getName());
+                if (netint.isUp()) interfaces.add(netint.getName());
             }
         }
         catch(Exception e) {
