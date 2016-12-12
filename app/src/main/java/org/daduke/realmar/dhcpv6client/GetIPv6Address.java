@@ -35,7 +35,8 @@ public class GetIPv6Address extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... aurl) {
 
-        SUCalls.remove_file("/data/misc/dhcp/dhcp6c_duid");
+        // as per rfc3315 the DUID should be presistent
+        // SUCalls.remove_file("/data/misc/dhcp/dhcp6c_duid");
 
         SUCalls.force_dhcpv6(inter_face);
         return null;
