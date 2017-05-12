@@ -23,7 +23,6 @@ import java.util.ArrayList;
  * Created by Anastassios Martakos on 8/24/15.
  */
 public class MainFragment extends Fragment {
-    private Button refresh_button;
     private BroadcastReceiver resultReceiver;
 
     @Override
@@ -34,18 +33,10 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_fragment, container, false);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.main_fragment, container, false);
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        refresh_button = (Button) getView().findViewById(R.id.button_refresh);
-
+        Button refresh_button = (Button) view.findViewById(R.id.button_refresh);
         refresh_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +45,8 @@ public class MainFragment extends Fragment {
         });
 
         get_ip_addresses();
+
+        return view;
     }
 
     @Override
@@ -74,7 +67,7 @@ public class MainFragment extends Fragment {
         return new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if(intent.getStringExtra("refresh_ips") == "refresh_ips") {
+                if(intent.getStringExtra("refresh_ips").equals("refresh_ips")) {
                     get_ip_addresses();
                 }
             }
@@ -84,7 +77,11 @@ public class MainFragment extends Fragment {
     public void get_ip_addresses() {
         ArrayList[] ips = Misc.get_ips();
 
-        final ListView list_view = (ListView) getView().findViewById(R.id.ip_addresses);
+        View v = getView();
+        if(v == null)
+            return;
+
+        final ListView list_view = (ListView)v.findViewById(R.id.ip_addresses);
 
         ArrayList<Object> ip_collection = new ArrayList<>();
 
