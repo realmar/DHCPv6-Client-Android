@@ -37,9 +37,9 @@ public class DHCPv6Integrity {
 
     private static String[] required_files_update = {
             "/system/bin/dhcp6ctl",
-            "/system/bin/dhcp6s",
-            "/system/etc/wide-dhcpv6/dhcp6s.conf",
-            "/system/etc/wide-dhcpv6/dhcp6sctlkey"
+            // "/system/bin/dhcp6s",
+            // "/system/etc/wide-dhcpv6/dhcp6s.conf",
+            // "/system/etc/wide-dhcpv6/dhcp6sctlkey"
     };
 
     private static String[] config_files = {
@@ -54,10 +54,10 @@ public class DHCPv6Integrity {
         md5_sums.put("/system/etc/wide-dhcpv6/dhcp6c.script",  "09ab71119edeea93a9517d17501d32be");
         //  md5_sums.put("/system/etc/wide-dhcpv6/dhcp6cDNS.conf", "fb99396abe72d95d172bcaa30b1f3bc3");
         md5_sums.put("/system/etc/wide-dhcpv6/dhcp6cctlkey",   "3602680e0fd4987eb2de8a7a8ea62044");
-        md5_sums.put("/system/etc/wide-dhcpv6/dhcp6sctlkey",   "d3539eee2e668fc84c40b918ecfdd9ee");
+        // md5_sums.put("/system/etc/wide-dhcpv6/dhcp6sctlkey",   "d3539eee2e668fc84c40b918ecfdd9ee");
         md5_sums.put("/system/bin/dhcp6ctl",                   "f36d6f20813c2a70ad736b3e937cb1b3");
-        md5_sums.put("/system/bin/dhcp6s",                     "fda776931320ef234911f1c8efe76637");
-        md5_sums.put("/system/etc/wide-dhcpv6/dhcp6s.conf",    "8901e99ab22f507bc89dffaed98aa45a");
+        // md5_sums.put("/system/bin/dhcp6s",                     "fda776931320ef234911f1c8efe76637");
+        // md5_sums.put("/system/etc/wide-dhcpv6/dhcp6s.conf",    "8901e99ab22f507bc89dffaed98aa45a");
         md5_sums.put("dhcpv6_base.zip",                        "a8a0a946966474d238cd126202733a4a");
         md5_sums.put("dhcpv6_update.zip",                      "0f49fa94d431e1766a367af9be23bfd3");
     }
