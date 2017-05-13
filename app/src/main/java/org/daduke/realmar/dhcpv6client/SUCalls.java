@@ -18,11 +18,11 @@ public class SUCalls {
 
     public static void force_dhcpv6(String ifname) {
         kill_client_process();
-        Shell.SU.run(Collections.singletonList("dhcp6c " + ifname));
+        start_dhcp6c_process(ifname);
     }
 
-    public static void start_dhpv6c_process(String inter_face) {
-        Shell.SU.run(Collections.singletonList("/system/bin/dhcp6c " + inter_face));
+    public static void start_dhcp6c_process(String ifname) {
+        Shell.SU.run(Collections.singletonList("dhcp6c " + ifname));
     }
 
     public static void download_file(String file) {
