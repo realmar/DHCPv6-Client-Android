@@ -98,7 +98,7 @@
     <string name="trying_ipv6">Trying to get an IPv6 on: </string>
 
     <string name="no_root_title">Failed to acquire root access</string>
-    <string name="no_root">It seems that you have no root permissions on your device, this software will not work without root</string>
+    <string name="no_root">It seems that you have no root permissions on your device, this software will not work without root. Only showing assigned IP addresses.</string>
     <string name="no_busybox_title">Busybox not found</string>
     <string name="no_busybox">It seems that you have Busybox not installed, this is a requirement</string>
     <string name="missing_commands_title">Commands missing</string>

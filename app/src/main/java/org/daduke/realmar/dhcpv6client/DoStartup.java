@@ -62,7 +62,7 @@ public class DoStartup extends AsyncTask<String, String, String> {
         };
 
         MsgBoxes error_message = new MsgBoxes();
-        AlertDialog fail_root_dialog_obj = (AlertDialog) error_message.one_button(activity, activity.getString(R.string.no_root_title), activity.getString(R.string.no_root), true);
+        AlertDialog fail_root_dialog_obj = (AlertDialog) error_message.one_button(activity, activity.getString(R.string.no_root_title), activity.getString(R.string.no_root), false);
         AlertDialog fail_busybox_dialog_obj = (AlertDialog) error_message.one_button(activity, activity.getString(R.string.no_busybox_title), activity.getString(R.string.no_busybox), true);
 
         fail_root_dialog_obj.setOnKeyListener(diaglog_key_listener);
@@ -86,12 +86,13 @@ public class DoStartup extends AsyncTask<String, String, String> {
 
                 fail_commands_dialog_obj.show();
             }else{
-                main_activity.post_startup();
+                main_activity.post_startup(true);
             }
         }else if(result_status.equals("busybox")) {
             fail_busybox_dialog_obj.show();
         }else if(result_status.equals("root")) {
             fail_root_dialog_obj.show();
+            main_activity.post_startup(false);
         }
 
     }

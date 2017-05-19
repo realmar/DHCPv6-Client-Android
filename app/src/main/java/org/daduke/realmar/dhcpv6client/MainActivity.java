@@ -128,11 +128,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mHelper != null) {
@@ -485,9 +480,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void post_startup() {
+    public void post_startup(Boolean canInstall) {
         SharedPreferences shared_preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         SharedPreferences.Editor editor = shared_preferences.edit();
+
+        option_menu_main.findItem(R.id.action_unorinstall).setEnabled(canInstall);
 
         if (!DHCPv6Integrity.CheckBase().equals("ok")) {
             editor.putBoolean("is_installed", false);
@@ -497,8 +494,9 @@ public class MainActivity extends AppCompatActivity {
             option_menu_main.findItem(R.id.action_invoke).setEnabled(false);
             option_menu_main.findItem(R.id.action_unorinstall).setIcon(R.mipmap.ic_install);
 
-            Misc.question_installation(MainActivity.this);
-        }else if(!DHCPv6Integrity.CheckUpdate().equals("ok")) {
+            if(canInstall)
+                Misc.question_installation(MainActivity.this);
+        } else if (!DHCPv6Integrity.CheckUpdate().equals("ok")) {
             editor.putBoolean("is_installed", true);
             editor.putBoolean("is_installed_update", false);
             editor.commit();
@@ -507,15 +505,19 @@ public class MainActivity extends AppCompatActivity {
             option_menu_main.findItem(R.id.action_invoke).setEnabled(false);
             option_menu_main.findItem(R.id.action_unorinstall).setIcon(R.mipmap.ic_install);
 
-            Misc.question_installation_update(MainActivity.this);
-        }else{
+            if(canInstall)
+                Misc.question_installation_update(MainActivity.this);
+        } else {
             editor.putBoolean("is_installed", true);
             editor.putBoolean("is_installed_update", true);
             option_menu_main.findItem(R.id.action_unorinstall).setTitle(R.string.action_uninstall);
             option_menu_main.findItem(R.id.action_invoke).setEnabled(true);
             option_menu_main.findItem(R.id.action_unorinstall).setIcon(R.mipmap.ic_uninstall);
 
-            if(!DHCPv6Integrity.check_config_files(MainActivity.this)) { new GenerateClientConfig(MainActivity.this).execute(); Log.v("EXCEPTION", "REFRESHING CONFIG FILE"); }
+            if (!DHCPv6Integrity.check_config_files(MainActivity.this)) {
+                new GenerateClientConfig(MainActivity.this).execute();
+                Log.v("EXCEPTION", "REFRESHING CONFIG FILE");
+            }
 
             editor.commit();
         }
