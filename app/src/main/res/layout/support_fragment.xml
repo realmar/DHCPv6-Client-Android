@@ -13,7 +13,7 @@
         android:text="@string/support_text"
         android:id="@+id/textView4"
         android:layout_centerHorizontal="true"
-        android:autoLink="email"
+        android:autoLink="web"
         android:textColor="@color/secondary_text_default_material_light" />
 
 </RelativeLayout>
