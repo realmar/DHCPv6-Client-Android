@@ -74,7 +74,13 @@ public class MainActivity extends AppCompatActivity {
                     failed.show();
                     return;
                 } else {
-                    MainActivity.mHelper.consumeAsync(purchase, mConsumeFinishedListener);
+                    try {
+                        MainActivity.mHelper.consumeAsync(purchase, mConsumeFinishedListener);
+                    }catch (IabHelper.IabAsyncInProgressException e) {
+                        MsgBoxes msgbox = new MsgBoxes();
+                        AlertDialog failed = (AlertDialog) msgbox.one_button(MainActivity.this, "Purchase Failed", getString(R.string.purchase_error) + e.toString(), false);
+                        failed.show();
+                    }
                 }
             }
         }
@@ -322,9 +328,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 MainActivity.mHelper.launchPurchaseFlow(MainActivity.this, item, request_code, mPurchaseFinishedListener, developer_payload);
             }
+            catch(IabHelper.IabAsyncInProgressException e) {
+                MainActivity.mHelper.flagEndAsync();
+            }
             catch(Exception e) {
                 Toast.makeText(MainActivity.this, getString(R.string.donation_retry), Toast.LENGTH_SHORT).show();
-                MainActivity.mHelper.flagEndAsync();
             }
         }
 
@@ -537,7 +545,13 @@ public class MainActivity extends AppCompatActivity {
                         additionalSkuList.add(Constants.DONATION_005);
                         additionalSkuList.add(Constants.DONATION_010);
 
-                        mHelper.queryInventoryAsync(true, additionalSkuList, mGotInventoryListener);
+                        try {
+                            mHelper.queryInventoryAsync(true, additionalSkuList, null, mGotInventoryListener);
+                        }catch (IabHelper.IabAsyncInProgressException e) {
+                            MsgBoxes msgbox = new MsgBoxes();
+                            AlertDialog failed = (AlertDialog) msgbox.one_button(MainActivity.this, "Purchase Failed", getString(R.string.purchase_error) + e.toString(), false);
+                            failed.show();
+                        }
                         billig_initialized = true;
                     }
                 }

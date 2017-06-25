@@ -52,7 +52,7 @@ public class Misc extends ActionBarActivity {
 
     public static int get_random_positive_int() {
         Random random = new Random();
-        return Math.abs(random.nextInt());
+        return Math.abs(random.nextInt()) % 65535;
     }
 
     public static int get_random_small() {
