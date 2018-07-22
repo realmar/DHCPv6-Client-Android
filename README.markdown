@@ -1,3 +1,21 @@
+# [DEPRECATED] Use [Mygod/DHCPv6-Client-Android](https://github.com/Mygod/DHCPv6-Client-Android) instead!
+
+I no longer maintain this project. Please use [MyGod's fork](https://github.com/Mygod/DHCPv6-Client-Android)
+instead. Not only is their version maintained but also comes with *massive improvements*:
+
+ - Supports Android 5.0+, this app struggles with [Nougat](https://github.com/realmar/DHCPv6-Client-Android/issues/8)
+ - Completely systemless and doesn't require Busybox; (no extra steps for install/uninstall)
+ - No closed source components and licensed in Apache 2.0;
+ - Modern codebase with automated test to ensure integrity
+
+You can get MyGod's fork here:
+
+<a href="https://play.google.com/store/apps/details?id=be.mygod.dhcpv6client" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height="60"></a>
+
+[XDA Labs](https://labs.xda-developers.com/store/app/be.mygod.dhcpv6client)
+
+[GitHub](https://github.com/Mygod/DHCPv6-Client-Android)
+
 DHCPv6 Client
 =============
 
