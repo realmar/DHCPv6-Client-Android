@@ -6,7 +6,7 @@ instead. Not only is their version maintained but also comes with *massive impro
  - Supports Android 5.0+, this app struggles with [Nougat](https://github.com/realmar/DHCPv6-Client-Android/issues/8)
  - Completely systemless and doesn't require Busybox; (no extra steps for install/uninstall)
  - No closed source components and licensed in Apache 2.0;
- - Modern codebase with automated test to ensure integrity
+ - Modern codebase
 
 You can get MyGod's fork here:
 
